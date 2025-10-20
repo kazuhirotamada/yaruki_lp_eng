@@ -1,0 +1,28 @@
+---
+
+// @ts-ignore
+import Config from '@/assets/libs/Constants.js';
+
+---
+        <header>
+			<div class="logoWrap">
+				<h1><a href="/"><img src="/assets/images/head/head_logo.svg" alt=`${Config.SITE_NAME} | ${Config.COMPANY_NAME}`></a></h1>
+			</div>
+
+			<div class="menuWrap">
+				<div class="contactWrap">
+					<div class="title">
+						<p>Get a Free Consultation</p>
+					</div>
+					<div class="telWrap boxWrap">
+						<a href=`tel:${Config.TEL}`><span class="icon"><img src="/assets/images/head/icon_tel.svg" alt="TEL"></span><span class="text">{Config.TEL_HYPHEN}</span></a>
+					</div>
+					<div class="mailWrap boxWrap">
+						<a href=""><span class="icon"><img src="/assets/images/head/icon_mail.svg" alt="Mail"></span><span class="text">Mail</span></a>
+					</div>
+					<div class="lineWrap boxWrap">
+						<a href=`${Config.LINE_URL}` target="_blank"><span class="icon"><img src="/assets/images/head/icon_line.svg" alt="LINE"></span></a>
+					</div>
+				</div>
+			</div>
+		</header>

@@ -1,0 +1,19 @@
+---
+
+const l_imgNum = 12;
+const imgs = Array.from({ length: l_imgNum }, (_, i) => `/assets/images/key_v/l_${i + 1}.jpg`);
+
+
+
+---
+
+<div class="lowerSwiper">
+    <div class="swiper-wrapper">
+        {imgs.map((img, i) => (
+            <div class="swiper-slide">
+                <div class="photo"><img src={img} alt={`slide ${i + 1}`} loading="lazy" /></div>
+            </div>
+        ))}
+    </div>
+</div>
+

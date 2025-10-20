@@ -1,0 +1,79 @@
+---
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+
+// ① Swiper Element 登録スクリプトを「URL文字列」で取り込む
+//   （Astro.resolve不要・?urlでViteがビルドURLに変換）
+// import registerUrl from '../../scripts/swiper-register.js?url';
+
+// ② 画像をランダムに並び替えて2枚ずつの配列に分割
+const u_imgNum = 8;
+const imgs = Array.from({ length: u_imgNum }, (_, i) => `/assets/images/key_v/u_${i + 1}.jpg`);
+
+// シャッフル
+const shuffled = imgs.toSorted(() => Math.random() - 0.5);
+
+// 2枚ずつに分割（奇数なら最後は1枚のまま）
+const pairs: string[][] = [];
+for (let i = 0; i < shuffled.length; i += 2) {
+  pairs.push(shuffled.slice(i, i + 2));
+}
+---
+
+
+<!-- スライダー本体：fade＋autoplayは無効（自前でランダム遷移させるため） -->
+<swiper-container
+  id="kv-swiper"
+  effect="fade"
+  speed="1000"
+  loop="true"
+  /* 自前制御にするので autoplay は外す */
+  style="--swiper-theme-color:#fff"
+>
+  {pairs.map((pair) => (
+    <swiper-slide>
+      <div class="pair">
+        <img src={pair[0]} alt="Image" loading="lazy" />
+        {pair[1] && <img src={pair[1]} alt="Image" loading="lazy" />}
+      </div>
+    </swiper-slide>
+  ))}
+</swiper-container>
+
+<script is:inline>
+  const MIN_DELAY = 2200;
+  const MAX_DELAY = 4200;
+  const el = document.querySelector('#kv-swiper');
+  let timer;
+
+  customElements.whenDefined('swiper-container').then(() => {
+    if (!el) return;
+
+    el.addEventListener('swiperinit', () => {
+      const sw = el.swiper;
+      if (!sw) return;
+
+      const jumpRandom = () => {
+        const total = sw.slides?.length ?? 0;
+        if (total < 2) return;
+        let next = sw.realIndex;
+        while (next === sw.realIndex) next = Math.floor(Math.random() * total);
+        sw.slideTo(next);
+        const wait = Math.floor(Math.random() * (MAX_DELAY - MIN_DELAY + 1)) + MIN_DELAY;
+        timer = setTimeout(jumpRandom, wait);
+      };
+
+      // 初回起動
+      timer = setTimeout(jumpRandom, 1000);
+    }, { once: true });
+  });
+
+  // クリーンアップ
+  window.addEventListener('beforeunload', () => timer && clearTimeout(timer));
+</script>
+
+<style>
+  
+  /* Swiper要素の基本 */
+  swiper-container { display: block; width: 100%; }
+</style>

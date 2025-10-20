@@ -1,0 +1,91 @@
+---
+/**
+ * LowerTicker — ゆっくり連続スクロール（等速）するスライダー
+ *
+ * Props:
+ * - items: string[]              // 画像URL配列（必須）
+ * - height?: number = 80         // スライド内画像の高さ(px)
+ * - gap?: number = 24            // スライド間の余白(px)
+ * - speed?: number = 15000       // 1トランジションの時間(ms) 大きいほどゆっくり
+ * - reverse?: boolean = false    // 逆方向に流す
+ * - pauseOnHover?: boolean = false // ホバーで一時停止
+ */
+
+// ② 画像をランダムに並び替えて2枚ずつの配列に分割
+const l_imgNum = 12;
+const imgs = Array.from({ length: l_imgNum }, (_, i) => `/assets/images/key_v/l_${i + 1}.jpg`);
+
+
+
+// Swiper Element 登録（このコンポーネント単体で完結させたい場合）
+// すでにグローバルで登録済みなら下行を消してOK
+// import registerUrl from '../../scripts/swiper-register.js?url';
+---
+
+
+<swiper-container
+  class="lower-ticker is-linear"
+  slides-per-view="auto"
+  free-mode="true"
+  loop="true"
+  loop-additional-slides="4"
+  allow-touch-move="false"
+  space-between={String(gap)}
+  speed={String(speed)}
+  autoplay={JSON.stringify({
+    delay: 0,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: !!pauseOnHover,
+    reverseDirection: !!reverse,
+  })}
+>
+  {items.map((src) => (
+    <swiper-slide class="ticker-slide">
+      <img src={src} alt="" loading="lazy" />
+    </swiper-slide>
+  ))}
+</swiper-container>
+
+<script is:inline>
+  // 画像デコード→次フレームで initialize（幅0回避）
+  const el = document.querySelector('.lower-swiper');
+  console.log(el);
+  customElements.whenDefined('swiper-container').then(async () => {
+    if (!el) return;
+    const imgs = [...el.querySelectorAll('img')];
+    await Promise.all(imgs.map(i => i.decode?.().catch(()=>{})));
+    await new Promise(r => requestAnimationFrame(()=>requestAnimationFrame(r)));
+    el.initialize();
+  });
+</script>
+
+
+<style define:vars={{ height: `${height}px` }}>
+  /* 等速にするため wrapper の easing を linear に固定 */
+  .is-linear .swiper-wrapper {
+    transition-timing-function: linear !important;
+  }
+
+  .lower-ticker {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    padding-block: 8px;
+  }
+
+  .ticker-slide {
+    width: auto; /* slidesPerView=auto なので中身サイズに合わせる */
+  }
+  .ticker-slide img {
+    display: block;
+    height: {height}; /* ← prop で高さ調整 */
+    width: auto;
+    object-fit: cover;
+  }
+
+  .lower-ticker,
+.lower-ticker .swiper-wrapper,
+.lower-ticker .swiper-slide {
+  pointer-events: none;
+}
+</style>

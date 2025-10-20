@@ -1,0 +1,49 @@
+---
+
+// @ts-ignore
+import Config from '@/assets/libs/Constants.js';
+
+const category = Astro.props;
+
+let addClassName = "";
+let href = "";
+let alt = "";
+let text = "";
+let imgSrc = "";
+
+if (category) {
+    switch (category.category) {
+        case "tel":
+            addClassName = "telWrap";
+            href = `tel:${Config.TEL}`;
+            alt = "TEL";
+            text = `<span class='disable_sp'>Call Us : </span>${Config.TEL_HYPHEN}`;
+            imgSrc = "/assets/images/responseDev/icon_tel.svg";
+            break;
+        case "mail":
+            addClassName = "mailWrap";
+            href = "";
+            alt = "Mail";
+            text = "Mail";
+            imgSrc = "/assets/images/responseDev/icon_mail.svg";
+            break;
+        case "line":
+            addClassName = "lineWrap";
+            href = `${Config.LINE_URL}`;
+            alt = "LINE";
+            text = "LINE";
+            imgSrc = "/assets/images/responseDev/icon_line.svg";
+            break;
+        default:
+            break;
+    }
+}
+
+---
+
+<div class={ "btnWrap" + (addClassName ? " " + addClassName : "") }>
+    <a href={href} target={category.category === "line" ? '_blank' : ''}>
+        <span class="icon"><img src={imgSrc} alt={alt}></span>
+        <span class="text" set:html={text}></span>
+    </a>
+</div>

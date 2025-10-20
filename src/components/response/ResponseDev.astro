@@ -1,0 +1,47 @@
+---
+
+// @ts-ignore
+import Config from '@/assets/libs/Constants.js';
+import BtnWrap from './BtnWrap.astro';
+
+const {responseVer} = Astro.props;
+
+
+
+---
+
+            <section class="unitWrap responseDev">
+				<div class="cont">
+
+                    {responseVer === "gotProblem" && (
+                        <div class="gotProblemTextWrap">
+                            <h1>Got a problem?</h1>
+                            <h3>The Yaruki Group is here to help — with full energy, care, and experience.<br />
+                            Feel free to contact us anytime!</h3>
+
+                            <h3>We’ll take care of it.</h3>
+                        </div>
+                    )}
+
+					<div class="titleWrap">
+						<h2>{responseVer === "gotProblem" ? "Get Help Now" : "Get a Free Consultation"}</h2>
+					</div>
+					<p>Choose the way that’s easiest for you — phone, email, or LINE.</p>
+
+					<div class="btnsWrapper">
+						<div class="telWrapper">
+							<BtnWrap category="tel"/>
+						</div>
+
+						<div class="lowerWrap">
+							<div class="mailWrapper">
+								<BtnWrap category="mail"/>
+							</div>
+
+							<div class="lineWrapper">
+								<BtnWrap category="line"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>

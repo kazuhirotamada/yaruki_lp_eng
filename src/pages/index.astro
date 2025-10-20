@@ -1,0 +1,375 @@
+---
+// @ts-ignore
+import Config from '@/assets/libs/Constants.js';
+import '../assets/scss/common.scss';
+import '../assets/scss/pc.scss';
+import Header from '../components/header/Header.astro';
+import Footer from '../components/footer/Footer.astro';
+import UpperSlider from '../components/slider/UpperSlider.astro';
+import LowerSlider from '../components/slider/LowerSlider.astro';
+import ResponseDev from '../components/response/ResponseDev.astro';
+
+const l_imgNum = 12;
+
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{Config.SITE_NAME} | {Config.COMPANY_NAME}</title>
+		
+	</head>
+	<body>
+
+
+		<Header />
+		
+		<main>
+			<section class="unitWrap" id="keyV">
+				<div class="cont">
+					<div class="upperPhotos">
+						<UpperSlider />
+						<div class="textWrap">
+							<p class="alexbrush">Because every move isn’t just about things —<br/>
+ it’s about people, peace of mind, and smiles.</p>
+						</div>
+					</div>
+					<div class="middleCont">
+						<h1>Household Goods Moving & Disposal Service<br/>
+						<span class="smaller">for Expats and U.S. Military Personnel in Japan</span></h1>
+						
+					</div>
+					<div class="lowerPhotos">
+						<LowerSlider />
+					</div>
+
+					<div class="readTextWrap">
+						<p>If you’ve brought furniture from overseas that doesn’t fit your new place, <br class="disable_sp"/>
+							we take care of removal, recycling, and responsible disposal through our unique eco-system.<br/>
+When it’s time to move out or return home, our team provides complete support <br class="disable_sp"/>
+— packing, junk removal, and deep cleaning — all in one seamless, end-to-end service.<br/>
+Our English-speaking staff assist you at every stage of your stay in Japan <br class="disable_sp"/>
+— from move-in to relocation and departure.</p>
+					</div>
+				</div>
+			</section>
+
+			<ResponseDev />
+
+			<section class="unitWrap" id="serviceWrap">
+				<div class="cont">
+					<div class="titleWrap commonH2">
+						<p class="bgText">Services</p>
+						<h2>Services</h2>
+					</div>
+
+					<div class="serviceContWrapper">
+						<div class="serviceBlock">
+							<div class="textWrap">
+								<h2>Furniture Removal & Transport</h2>
+								<p class="desc">Safe and careful moving of large furniture that doesn’t it through Japanese doorways.</p>
+							</div>
+
+							<div class="photos">
+								<div class="photo">
+									<img src="/assets/images/service/img_01_01.jpg" alt="Furniture Removal & Transport Image" loading="lazy"/>
+								</div>
+								<div class="photo">
+									<img src="/assets/images/service/img_01_02.jpg" alt="Furniture Removal & Transport Image" loading="lazy"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="serviceBlock flexReverse">
+							<div class="textWrap">
+								<h2>Junk Removal / Collection Service</h2>
+								<p class="desc">Licensed, English-friendly waste pickup and disposal for homes, offices, and base housing.</p>
+							</div>
+
+							<div class="photos">
+								<div class="photo">
+									<img src="/assets/images/service/img_02_01.jpg" alt="Junk Removal / Collection Service Image" loading="lazy"/>
+								</div>
+								<div class="photo">
+									<img src="/assets/images/service/img_02_02.jpg" alt="Junk Removal / Collection Service Image" loading="lazy"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="serviceBlock">
+							<div class="textWrap">
+								<h2>Disassembly & Re-assembly Service</h2>
+								<p class="desc">Professional dismantling and re-assembly of large or imported furniture.</p>
+							</div>
+
+							<div class="photos">
+								<div class="photo">
+									<img src="/assets/images/service/img_03_01.jpg" alt="Disassembly & Re-assembly Service Image" loading="lazy"/>
+								</div>
+								<div class="photo">
+									<img src="/assets/images/service/img_03_02.jpg" alt="Disassembly & Re-assembly Service Image" loading="lazy"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="serviceBlock flexReverse">
+							<div class="textWrap">
+								<h2>Cleaning Service</h2>
+								<p class="desc">From deep cleaning after move-out to final sanitizing — we make your place inspection-ready.</p>
+							</div>
+
+							<div class="photos">
+								<div class="photo">
+									<img src="/assets/images/service/img_04_01.jpg" alt="Cleaning Service Image" loading="lazy"/>
+								</div>
+								<div class="photo">
+									<img src="/assets/images/service/img_04_02.jpg" alt="Cleaning Service Image" loading="lazy"/>
+								</div>
+							</div>
+						</div>
+						
+
+						<div class="serviceBlock">
+							<div class="textWrap">
+								<h2>Recycling & Proper Disposal</h2>
+								<p class="desc">Eco-friendly recycling and legally compliant disposal through our integrated eco-system.</p>
+							</div>
+
+							<div class="photos">
+								<div class="photo">
+									<img src="/assets/images/service/img_05_01.jpg" alt="Recycling & Proper Disposal Image" loading="lazy"/>
+								</div>
+								<div class="photo">
+									<img src="/assets/images/service/img_05_02.jpg" alt="Recycling & Proper Disposal Image" loading="lazy"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="serviceBlock flexReverse">
+							<div class="textWrap">
+								<h2>Eco & Community Reuse</h2>
+								<p class="desc">Giving new life to furniture and items through recycling and community reuse in Japan.</p>
+							</div>
+
+							<div class="photos">
+								<div class="photo">
+									<img src="/assets/images/service/img_06_01.jpg" alt="Eco & Community Reuse Image" loading="lazy"/>
+								</div>
+								<div class="photo">
+									<img src="/assets/images/service/img_06_02.jpg" alt="Eco & Community Reuse Image" loading="lazy"/>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</section>
+
+
+			<section class="unitWrap" id="qaWrap">
+				<div class="bgWrap">
+					<img src="/assets/images/qa/bgImg.jpg" loading="lazy" alt="">
+				</div>
+				<div class="cont">
+					<div class="titleWrap commonH2">
+						<p class="bgText">Common Problems We Solve</p>
+						<h2>Common Problems <br class="disable_pc" />We Solve</h2>
+					</div>
+
+					<div class="qaContWrapper">
+						<div class="qaBlock align-left ">
+							<p class="alexbrush num">1.</p>
+							<p class="question">“My sofa doesn’t fit through the Japanese doorway.”</p>
+						</div>
+
+						<div class="qaBlock align-right">
+							<p class="alexbrush num">2.</p>
+							<p class="question">“I need to get rid of furniture before moving out.”</p>
+						</div>
+
+						<div class="qaBlock align-center">
+							<p class="alexbrush num">3.</p>
+							<p class="question">“I’m leaving Japan soon and have no time to clean.”</p>
+						</div>
+
+						<div class="qaBlock align-right">
+							<p class="alexbrush num">4.</p>
+							<p class="question">“I don’t know how to separate or dispose of waste in Japan.”</p>
+						</div>
+
+						<div class="qaBlock align-left">
+							<p class="alexbrush num">5.</p>
+							<p class="question">“I can’t communicate well with my landlord or the cleaning company.”</p>
+						</div>
+
+						<div class="qaBlock  align-center">
+							<p class="alexbrush num">6.</p>
+							<p class="question">“The moving company won’t take my unwanted furniture.”</p>
+						</div>
+
+						<div class="qaBlock align-left">
+							<p class="alexbrush num">7.</p>
+							<p class="question">“My landlord requires the room to be perfectly clean before inspection.”</p>
+						</div>
+
+						<div class="qaBlock align-right">
+							<p class="alexbrush num">8.</p>
+							<p class="question">“I need help coordinating my move-out date and waste pickup.”</p>
+						</div>
+					</div>
+					
+					<h4 class=" tc mt60"><span class="ul_yellow">If you’ve faced any of these situations, don’t worry — we’re here to help.</span></h4>
+
+				</div>
+			</section>
+			
+			<ResponseDev />
+
+			<section class="unitWrap" id="conceptWrap">
+				<div class="bgWrap">
+					<img src="/assets/images/concept/bgImg.jpg" loading="lazy" alt="">
+				</div>
+				<div class="cont">
+					<div class="titleWrap">
+						<h1 class="alexbrush">We love Shonan</h1>
+					</div>
+					<h3 class="read">
+						— and together, we’re creating a cleaner, friendlier, <br class="disable_sp"/>
+and more livable community —<br />
+a place to care for, call home, <br class="disable_sp"/>
+and pass on to the next generation.
+					</h3>
+
+					<p class="desc">Here in Japan, even old furniture and belongings have stories.<br />
+We believe in giving them new life through recycling and reuse — keeping Shonan beautiful for <br class="disable_sp"/>everyone, today and tomorrow.<br />
+Even the furniture and items you brought from overseas can find a new life here — carefully recycled, <br class="disable_sp"/>cherished, and used again with respect, becoming part of the community’s ongoing story.</p>
+
+				</div>
+			</section>
+
+			<section class="unitWrap" id="areaWrap">
+				<div class="cont">
+					<div class="titleWrap commonH2">
+						<p class="bgText">Service Areas</p>
+						<h2>Service Areas</h2>
+					</div>
+
+					<div class="areaContWrapper">
+						<div class="imgWrap">
+							<img src="/assets/images/area/img_01.jpg" alt="Service Areas Image" loading="lazy"/>
+						</div>
+						<div class="textWrap">
+							<p>Kanagawa and Tokyo — including the Shonan area (Fujisawa, Chigasaki, Kamakura, Hiratsuka, Zushi, Hayama, Yokosuka, Miura, Odawara, and nearby cities) — and nearby resort and suburban areas such as Minami-Ashigara, Hakone, Manazuru, Yugawara, Atami, Ito, and Izunokuni — especially areas with U.S. military bases such as Zama, Atsugi, Yokosuka, and Fussa.</p>
+
+							<p><span class="ul_yellow bold">English-speaking staff available.</span></p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			
+			<section class="unitWrap" id="gotProblemsWrap">
+			
+				<ResponseDev responseVer="gotProblem" />
+
+			</section>
+
+			<section class="unitWrap" id="overviewWrap">
+				<div class="cont">
+					<div class="titleWrap commonH2">
+						<p class="bgText">Company Overview</p>
+						<h2>Company Overview</h2>
+					</div>
+
+					<div class="overviewContWrapper">
+						<div class="upperWrap">
+							<div class="tc mb25 flexWrap">
+								<h3>We are Yaruki Group.</h3>
+								<img src="/assets/images/overview/logo.svg" loading="lazy" alt="Yaruki Group Co., Ltd. Logo"/>
+								<img src="/assets/images/overview/img_01.svg" loading="lazy" alt="Shonan Image"/>
+							</div>
+							<p>With over 10 years of experience in Japan, we are a trusted, locally rooted, and long-standing company based in the Shonan area of Kanagawa.<br />
+We’ve been helping both Japanese and international residents with moving, junk removal, cleaning, and recycling — always with full energy, care, and reliability.<br />
+Our English-speaking team understands the needs of expats, U.S. military families, and local residents alike, providing seamless, stress-free service across Kanagawa and Tokyo.</p>
+
+<p>Veteran, local, and dependable — the Yaruki Group is here to help.</p>
+						</div>
+
+						<div class="lowerWrap">
+							<h4>About Yaruki Group Co., Ltd.</h4>
+
+							<div class="tblWrap">
+								<dl>
+									<dt>Company Name</dt>
+									<dd>{Config.COMPANY_NAME}</dd>
+								</dl>
+								<dl>
+									<dt>Head Office</dt>
+									<dd>{Config.ADDRESS_ENG}</dd>
+								</dl>
+								<dl>
+									<dt>Warehouse</dt>
+									<dd>{Config.WAREHOUSE_ADDRESS_ENG}</dd>
+								</dl>
+								<dl>
+									<dt>Phone</dt>
+									<dd><a href={`tel:${Config.TEL}`}>{Config.TEL_HYPHEN}</a></dd>
+								</dl>
+								<dl>
+									<dt>Email</dt>
+									<dd><a href={`mailto:${Config.EMAIL}`}>{Config.EMAIL}</a></dd>
+								</dl>
+								<dl>
+									<dt>Licensed</dt>
+									<dd>Secondhand Dealer (License No. 452660009560), <br>
+Industrial Waste Transport (No. 01403195597) </dd>
+								</dl>
+								<dl>
+									<dt>Certified</dt>
+									<dd>Professional Level 1 in Pre-death Organizing, <br>
+Certified Estate Organizer</dd>
+								</dl>
+								<dl>
+									<dt>Established</dt>
+									<dd>Over 10 years in service</dd>
+								</dl>
+								<dl>
+									<dt>Services</dt>
+									<dd>Junk Removal, <br>Recycling, <br>Cleaning, <br>Relocation Support, <br>Estate Cleanup, <br>Empty House Management, <br>etc...</dd>
+								</dl>
+								<dl>
+									<dt>Areas</dt>
+									<dd>Kanagawa & Tokyo — especially the Shonan region (Fujisawa, Chigasaki, Kamakura, Hiratsuka, Zushi, Hayama, Yokosuka, Miura, Odawara, and nearby cities)</dd>
+								</dl>
+								<dl>
+									<dt>Main Website<br class="disable_sp"/> (Japanese)</dt>
+									<dd><a href={Config.MAIN_SITE_URL} target="_blank" >{Config.MAIN_SITE_URL}</a></dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</main>
+
+		<Footer />
+
+		<script>
+			// @ts-ignore
+			import SwiperInit from '@/assets/js/SwiperInit.js';
+
+			window.addEventListener('load', () => {
+				SwiperInit();
+			});
+		</script>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,368 @@
+@use "./variable" as *;
+
+
+
+/*======================================
+
+	0.body
+
+=======================================*/
+
+html{
+	font-size: $base-font-size;
+}
+
+body {
+	font-family: 'Roboto',"Hiragino Sans W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "メイリオ", Meiryo, "MS Pゴシック", "MS PGothic", sans-serif;
+	color:$black-color;
+	background: $bg-color;
+	letter-spacing: 0.1rem;
+	transform: rotate(0.005);
+	color: $base-text-color;
+}
+
+
+*{
+	margin:0;
+	padding: 0;
+}
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+p {
+	color: $gray333-color;
+	line-height: 1.6em;
+	letter-spacing: 0.1em;
+	margin-bottom: 1.5em;
+	font-size: 1rem;
+}
+
+
+ul{
+	margin-bottom: 1.5em;
+}
+
+li{
+	color: $gray333-color;
+	line-height: 1.8em;
+}
+
+a{
+	color: $black-color;
+	text-decoration: underline;
+    transition: all .3s;
+}
+
+a:hover {
+	color: $gray666-color;
+	text-decoration: none;
+    transition: all .3s;
+}
+
+img {
+	border: none;
+	vertical-align: bottom;
+}
+
+li{
+	list-style: none;
+}
+
+.clear {
+	clear: both;
+}
+
+.clearfix:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.disable_sp {
+	display: block;
+}
+
+.disable_pc {
+	display: none;
+}
+
+@media screen and (max-width: 767px) {
+	.disable_sp {
+		display: none;
+	}
+
+	.disable_pc {
+		display: block;
+	}
+}
+
+
+/* ------------------------------------
+  fonts
+------------------------------------ */
+
+
+/* ------------------------------------
+  Roboto フォント共通設定
+------------------------------------ */
+$roboto-weights: 100, 300, 400, 500, 700, 900;
+
+.roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+@each $w in $roboto-weights {
+    .roboto-#{$w} {
+		@extend .roboto;
+        font-weight: $w;
+    }
+} 
+
+/* ------------------------------------
+  Alex Brush フォント共通設定
+------------------------------------ */
+.alexbrush {
+  font-family: 'Alex Brush', cursive;
+}
+
+
+/** カラー関係 **/
+
+.pink {
+	color: $pink-color;
+}
+
+.blue {
+	color: $blue-color;
+}
+
+.purple {
+	color: $purple-color;
+}
+
+.red {
+	color: $red-color;
+}
+
+.orange {
+	color: $orange-color;
+}
+
+.black {
+	color: $base-color;
+}
+
+.green {
+	color: #009944;
+}
+
+.yellow {
+	color: #f8b62d;
+}
+
+.gold {
+	color: #c9a063;
+}
+
+/** margin **/
+
+@for $i from 0 through 20 {
+    .mt#{$i * 5} {
+        margin-top: #{$i * 5}px;
+    }
+} 
+
+@for $i from 0 through 20 {
+    .mb#{$i * 5} {
+        margin-bottom: #{$i * 5}px;
+    }
+} 
+
+@for $i from 0 through 20 {	
+    .mr#{$i * 5} {
+        margin-right: #{$i * 5}px;
+    }
+} 
+
+@for $i from 0 through 20 {
+    .ml#{$i * 5} {
+        margin-left: #{$i * 5}px;
+    }
+}   
+
+@for $i from 0 through 20 {
+    .mr#{$i}em {
+        margin-right: #{$i}em;
+    }
+}  
+
+@for $i from 0 through 20 {
+    .ml#{$i}em {
+        margin-left: #{$i}em;
+    }
+} 
+
+
+
+/** padding **/
+
+@for $i from 0 through 20 {
+    .pt#{$i * 5} {
+        padding-top: #{$i * 5}px;
+    }
+} 
+
+@for $i from 0 through 20 {
+    .pb#{$i * 5} {
+        padding-bottom: #{$i * 5}px;
+    }
+} 
+
+@for $i from 0 through 20 {	
+    .pr#{$i * 5} {
+        padding-right: #{$i * 5}px;
+    }
+} 
+
+@for $i from 0 through 20 {
+    .pl#{$i * 5} {
+        padding-left: #{$i * 5}px;
+    }
+}  
+
+
+/** font style **/
+
+.ft_normal {
+	font-weight: normal;
+}
+
+.ft_bold {
+	font-weight: bold;
+}
+
+@for $i from 1 through 8 {
+    .fw#{$i * 100} {
+        font-weight: #{$i * 100};
+    }
+}  
+
+.ft_italic {
+	font-style: italic;
+}
+
+/** text align **/
+
+.tc {
+	text-align: center;
+}
+
+.tl {
+	text-align: left;
+}
+
+.tr {
+	text-align: right;
+}
+
+
+
+/** テキスト関係 **/
+
+.bold {
+	font-weight: bold;
+}
+
+.txt-none {
+	text-decoration: none;
+}
+
+.txt-underline {
+	text-decoration: underline;
+}
+
+.txt-line-through {
+	text-decoration: line-through;
+}
+
+.ul_yellow {
+
+	background: linear-gradient(transparent 70%, $yellow-color 30%);
+    padding: 0 6px;
+}
+
+
+/** フォントサイズ関係 **/
+
+@for $i from 8 through 50 {
+    .ft#{$i} {
+        font-size: #{$i}px;
+    }
+}  
+
+// @for $i from 8 through 50 {
+//     .ft#{$i}rem {
+//         font-size: #{$i / 10}rem;
+//     }
+// }  
+
+
+/** other font decoration **/
+
+.dropcaps {
+	font-size: 3em;
+}
+
+.first_dot {
+	text-indent: -1em;
+}
+
+
+
+.chu {
+	font-size: 0.6875rem;
+}
+
+
+
+/** ワイド関係 **/
+
+.w100p {
+	width: 100%;
+}
+
+@for $i from 0 through 140 {
+    .w#{$i * 10} {
+        width: #{$i * 10}px;
+    }
+}  
+
+.margin-center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@media screen and (max-width: 959px) {
+	.w960 {
+		width: 100%;	
+	}
+}
+
+@media screen and (max-width: 979px) {
+	.w980 {
+		width: 100%;	
+	}
+}
+
+@media screen and (max-width: 999px) {
+	.w1000 {
+		width: 100%;	
+	}
+}

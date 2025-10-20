@@ -1,0 +1,30 @@
+---
+
+// ② 画像をランダムに並び替えて2枚ずつの配列に分割
+const u_imgNum = 8;
+const imgs = Array.from({ length: u_imgNum }, (_, i) => `/assets/images/key_v/u_${i + 1}.jpg`);
+
+// シャッフル
+const shuffled = imgs.toSorted(() => Math.random() - 0.5);
+
+// 2枚ずつに分割（奇数なら最後は1枚のまま）
+const pairs: string[][] = [];
+for (let i = 0; i < shuffled.length; i += 2) {
+  pairs.push(shuffled.slice(i, i + 2));
+}
+
+---
+
+<div class="upperSwiper">
+    <div class="swiper-wrapper">
+        {pairs.map((pair, i) => (
+            <div class="swiper-slide group">
+                <div class="photo"><img src={pair[0]} alt={`slide ${i * 2 + 1}`} loading="lazy" /></div>
+                {pair[1] && <div class="photo"><img src={pair[1]} alt={`slide ${i * 2 + 2}`} loading="lazy" /></div>}
+            </div>
+        ))}
+    </div>
+</div>
+
+
+

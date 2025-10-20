@@ -1,0 +1,8 @@
+---
+import UpperSlider from "./UpperSlider.jsx"; // ← 同名＆相対パスでOK
+
+const u_imgNum = 8;
+const imgs = Array.from({ length: u_imgNum }, (_, i) => `/assets/images/key_v/u_${i + 1}.jpg`);
+---
+
+<UpperSlider images={imgs} client:load />
