@@ -1,12 +1,30 @@
 <?php
 // confirm.php
 require_once __DIR__ . '/../app/sections.php';  // slotを利用してframe.phpの中にコンテンツだけを埋め込む
+require_once __DIR__ . '/../app/contact_common.php';
 
 session_start();
 
 // 1) 受け取り & サニタイズ（必要に応じて厳格化）
 function val($key){ return isset($_POST[$key]) ? trim($_POST[$key]) : ''; }
 function esc($s){ return htmlspecialchars($s, ENT_QUOTES, 'UTF-8'); }
+
+/***********/
+
+// topic 値 → 表示名のマッピング
+$TOPIC_LABELS = [
+  'quote'    => 'Request a Quote',
+  'support'  => 'Support',
+  'general'  => 'General Inquiry',
+  'moving'   => 'Moving to Japan',
+  'disposal' => 'Unwanted Items / Disposal',
+  'cleaning' => 'Move-out Cleaning',
+  'storage'  => 'Short-term Storage',
+  'other'    => 'Other',
+];
+
+/************/
+
 
 $honeypot = val('website');
 if ($honeypot !== '') { http_response_code(400); exit('Spam detected.'); }
@@ -32,7 +50,8 @@ $reply_via = isset($_POST['reply_via']) && is_array($_POST['reply_via']) ? $_POS
 
 // 簡易バリデーション（足りなければ追加）
 $errors = [];
-if ($data['topic'] === '')     $errors['topic'] = 'Please select inquiry type.';
+global $ALLOW_TOPICS, $TOPIC_LABELS;
+if ($data['topic'] === '' || !in_array($data['topic'], $ALLOW_TOPICS, true)) $errors['topic'] = 'Please select inquiry type.';
 if ($data['name'] === '')      $errors['name'] = 'Please enter your name.';
 if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) $errors['email'] = 'Email is invalid.';
 if ($data['subject'] === '')   $errors['subject'] = 'Please enter subject.';
@@ -62,6 +81,11 @@ if (empty($_SESSION['csrf_token'])) {
   $_SESSION['csrf_token'] = bin2hex(random_bytes(16));
 }
 $csrf = $_SESSION['csrf_token'];
+
+
+// topic 値を出力時に変換
+$topicLabel = $TOPIC_LABELS[$data['topic']] ?? $data['topic'];
+
 ?>
 
 
@@ -93,7 +117,7 @@ start_section('content'); ?>
   <div class="confirmWrapper">
     <h2>Confirm your submission</h2>
     <table>
-      <tr><th>Inquiry Type</th><td><?=esc($data['topic'])?></td></tr>
+      <tr><th>Inquiry Type</th><td><?=esc($topicLabel)?></td></tr>
       <tr><th>Your Name</th><td><?=esc($data['name'])?></td></tr>
       <tr><th>Company</th><td><?=esc($data['company'])?></td></tr>
       <tr><th>Email</th><td><?=esc($data['email'])?></td></tr>

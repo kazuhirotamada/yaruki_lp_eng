@@ -4,6 +4,8 @@
 
 declare(strict_types=1);
 
+require_once __DIR__ . '/../app/contact_common.php';
+
 // ── 設定 ───────────────────────────────────────
 $TO_EMAILS = [
   'tamada@dmn-co.com',
@@ -13,7 +15,7 @@ $TO_EMAILS = [
 $FROM_EMAIL = 'info@shonan-anshin.com'; // envelope & From
 $SITE_NAME  = 'Yaruki Group Co., Ltd.';
 $THANKS_URL = '/contact/thanks';
-$ALLOW_TOPICS = ['quote','support','general','moving','disposal','cleaning','storage','other'];
+global $ALLOW_TOPICS, $TOPIC_LABELS;
 
 // ── 前処理（送信制御）────────────────────────────
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -30,9 +32,10 @@ if (isset($_SESSION['last_submit_ts']) && ($now - (int)$_SESSION['last_submit_ts
 $_SESSION['last_submit_ts'] = $now;
 
 // Content-Type チェック（任意：マルチパートのみ許可）
-if (stripos($_SERVER['CONTENT_TYPE'] ?? '', 'multipart/form-data') === false) {
+$ct = $_SERVER['CONTENT_TYPE'] ?? '';
+if (!preg_match('#^(multipart/form-data|application/x-www-form-urlencoded)#i', $ct)) {
   http_response_code(400);
-  echo 'Invalid content type.'; exit;
+  exit('Invalid content type.');
 }
 
 // ── 受け取り & サニタイズ ───────────────────────
@@ -75,7 +78,7 @@ $errors = [];
 if ($honeypot !== '') { $errors[] = 'Spam detected.'; }
 
 // 必須
-if (!in_array($topic, $ALLOW_TOPICS, true)) { $errors[] = 'Select a valid inquiry type.'; }
+if ($topic === '' || !in_array($topic, $ALLOW_TOPICS, true)) $errors[] = 'Select a valid inquiry type.';
 if ($name === '')                            { $errors[] = 'Enter your name.'; }
 if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) { $errors[] = 'Enter a valid email.'; }
 if ($subjectIn === '')                       { $errors[] = 'Enter subject.'; }
@@ -151,6 +154,7 @@ if ($errors) {
 // ── メール作成 ─────────────────────────────────
 $nl = "\r\n";
 $date = date('Y-m-d H:i:s');
+$topicLabel = topic_label($topic, $TOPIC_LABELS);
 
 $envelopeParam = "-f{$FROM_EMAIL}";
 
@@ -163,7 +167,7 @@ $replyViaStr = $replyVia ? implode(', ', $replyVia) : '—';
 $body =
 "New contact from {$SITE_NAME}{$nl}{$nl}" .
 "Date: {$date}{$nl}" .
-"Topic: {$topic}{$nl}" .
+"Topic: {$topicLabel}{$nl}" .
 "Name: {$name}{$nl}" .
 "Company: {$company}{$nl}" .
 "Email: {$email}{$nl}" .
@@ -227,7 +231,7 @@ $autoBody =
 "Dear {$name},{$nl}{$nl}"
 ."Thank you for reaching out to us. We have received your inquiry as follows:{$nl}{$nl}"
 ."--------------------------------------{$nl}"
-."Topic: {$topic}{$nl}"
+."Topic: {$topicLabel}{$nl}"
 ."Name: {$name}{$nl}"
 ."Company: {$company}{$nl}"
 ."Email: {$email}{$nl}"
