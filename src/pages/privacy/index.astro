@@ -1,0 +1,170 @@
+---
+
+import '@/assets/scss/common.scss';
+import '@/assets/scss/pc.scss';
+import Head from '@/components/head.astro';
+import Header from '@/components/header/Header.astro';
+import Footer from '@/components/footer/Footer.astro';
+import ResponseDev from '@/components/response/ResponseDev.astro';
+
+const l_imgNum = 12;
+const pageID = "sec";
+const pageSlug = "privacy";
+---
+
+<html lang="en">
+	<Head pageSlug={pageSlug} />	
+
+
+	<body id={pageID}>
+
+
+		<Header />
+		
+		<main>
+			
+
+			<section class="unitWrap" id="privacyWrap">
+				<div class="cont">
+					<div class="titleWrap commonH2">
+						<p class="bgText">Privacy Policy</p>
+						<h2>Privacy Policy</h2>
+					</div>
+
+					
+
+                    <div class="box_wrap">
+                        
+                        <div class="box read_wrap">
+                            <p class="tl bold mb0">Yaruki Group Co., Ltd. (hereinafter “we” or “us”) hereby establishes this Privacy Policy concerning the handling of personal information of users in connection with the services provided on this website (hereinafter “the Service”).</p>
+                        </div><!-- box -->
+
+                        <div class="box">
+                            <h2>1. Definition of Personal Information</h2>
+                            <p>“Personal information” refers to information about a living individual that can identify that individual from the description (such as name, date of birth, address, telephone number, contact details, etc.), as well as data related to appearance, fingerprints, voiceprints, and unique identifiers like passport number, driver’s license number, My Number, insurance number, etc. including any single data that can identify a specific individual.</p>
+                        </div><!-- box -->
+                        
+                        <div class="box">
+                            <h2>2. Methods of Collecting Personal Information</h2>
+                            <p>We may request personal information such as name, date of birth, address, telephone number, email address, bank account number, credit card number, driver’s license number, etc., when a user registers for use. <br />
+                            Also, we may collect transaction records, payment details, and other personal information from our partners (information providers, advertisers, ad networks, etc.), if needed.</p>
+                        </div><!-- box -->
+                        
+                        <div class="box">
+                            <h2>3. Purpose of Use of Personal Information</h2>
+                            <p>We use personal information for the following purposes: </p>
+                            <ol>
+                            <li>To provide and operate our Services</li>
+                            <li>To respond to user inquiries (including identity verification)  </li>
+                            <li>To send emails regarding new features, updates, campaigns, and other services</li>
+                            <li>To communicate necessary notifications such as maintenance or important notices</li>
+                            <li>To identify users who violate our Terms of Use or attempt to use the Service for unlawful or improper purposes, and refuse their use</li>
+                            <li>To allow users to view, update, or delete their registered information, or view usage history</li>
+                            <li>To bill users for paid services</li>
+                            <li>Other purposes incidental to the above</li>
+                            </ol>
+                        </div><!-- box -->
+                        
+                        <div class="box">
+                            <h2>4. Change of Purpose of Use</h2>
+                            <ol>
+                            <li>We will change the purpose of use only if it is reasonably related to the original purpose. </li>
+                            <li>If we change the purpose, we will notify users or publish the new purpose on this website.</li>
+                            </ol>
+                        </div><!-- box -->
+                        
+                        <div class="box">
+                            <h2>5. Provision to Third Parties</h2>
+                            <ol>
+                            <li>Except in the following cases, we will not provide personal information to third parties without user consent, except as permitted by law: 
+                            <ol>
+                            <li>Cases where necessary to protect life, body, or property, when consent is difficult to obtain</li>
+                            <li>Cases necessary for improvement of public health or children’s healthy development, when consent is difficult to obtain</li>
+                            <li>Cases where cooperation is required by government agencies or local public bodies in executing statutory duties; obtaining consent would interfere with those duties </li>
+                            <li>Cases where the user is notified in advance that third-party provision is included, the items provided, the methods, and the user’s right to demand cessation, and such notification is registered with the Personal Information Protection Commission </li></ol></li>
+                            <li>The following are not considered third-party provision even if personal information is provided:
+                            <ol>
+                            <li>Delegation of handling within the scope necessary for achieving purposes</li>
+                            <li>Provision due to corporate merger or succession</li>
+                            <li>Joint use with others, provided that joint use details, items, users, purpose, and responsibility for management are notified in advance</li>
+                            </ol></li>
+                            </ol>
+                        </div><!-- box -->
+                        
+                        <div class="box">
+                            <h2>6. Disclosure of Personal Information</h2>
+                            <ol>
+                            <li>When a user requests the disclosure of their personal information, we will disclose it without delay, except for the whole or part that falls under the following cases. If we decide not to disclose, we will notify the user with reasons. We may charge a fee of 1,000 yen per request. 
+                            <ol>
+                            <li>If disclosure would harm the rights or interests of the user or a third party </li>
+                            <li>If disclosure would cause serious impediment to proper performance of our business</li>
+                            <li>If disclosure would violate laws</li>
+                            </ol></li>
+                            <li>We will not disclose browsing history or non-personal information.</li>
+                            </ol>
+                        </div><!-- box -->
+                        
+                        <div class="box">
+                            <h2>7. Correction and Deletion of Personal Information</h2>
+                            <ol>
+                            <li>A user may request correction, addition, or deletion of their personal information if it is incorrect. </li>
+                            <li>If we determine it is necessary, we will promptly make corrections or deletions.</li>
+                            <li>After making or refusing a request, we will notify the user without delay.</li>
+                            </ol>
+                        </div><!-- box -->
+                        
+                        <div class="box">
+                            <h2>8. Suspension of Use or Erasure</h2>
+                            <ol>
+                            <li>A user may request suspension or erasure of use if they believe their personal information is handled beyond the intended purpose or acquired improperly.</li>
+                            <li>We will investigate and, if judged appropriate, suspend or erase the information without delay. </li>
+                            <li>If we decide to suspend or not to suspend or erase the information, we will notify the user without delay.</li>
+                            <li>If suspension or erasure is very costly or difficult, or alternative measures can protect user rights, we may take such alternative measures instead.</li>
+                            </ol>
+                        </div><!-- box -->
+                        
+                        <div class="box">
+                            <h2>9. Changes to Privacy Policy</h2>
+                            <ol>
+                            <li>We may change this Privacy Policy without prior notice, except as otherwise provided by law. </li>
+                            <li>Unless otherwise specified, changed policies take effect when published on this website.</li>
+                            </ol>
+                        </div><!-- box -->
+                        
+                        <div class="box">
+                            <h2>Contact Information</h2>
+                            <p>If you have any inquiries regarding this policy, please contact us at: </p>
+                            <p>Address: 687-39 Nishitomi, Fujisawa, Kanagawa, Japan  <br>
+                            Company: Yaruki Group Co., Ltd. <br>
+                            Email: <a href="mailto:info@shonan-anshin.com">info@shonan-anshin.com </a></p>
+                            
+                        
+                        </div><!-- box -->	
+                        
+                        <div class="box">
+                            <h2>11. Governing Language</h2>
+                            <p>This English version of the Privacy Policy is provided for reference and convenience only.<br />
+                            In case of any inconsistency or difference in interpretation between the English and Japanese versions, <a href="https://shonan-anshin.com/privacy/" target="_blank">the Japanese version</a> shall prevail.</p>
+                        </div><!-- box -->
+                        
+                    </div><!-- box_wrap -->
+				</div>
+			</section>
+
+
+			
+			
+			<ResponseDev />
+
+			
+
+			
+
+		</main>
+
+		<Footer />
+
+		
+		
+	</body>
+</html>

@@ -1,0 +1,63 @@
+---
+// @ts-ignore
+import Config from '@/assets/libs/Constants.js';
+import metaData from '@/assets/libs/PageMetas.js';
+
+// 1) metaData.pages のキー型を取得
+type PageKey = keyof typeof metaData.pages;
+
+// 2) Astro.props を型付け
+interface Props { pageSlug?: PageKey }
+const { pageSlug } = Astro.props as Props;
+
+// 3) 実在キーに絞り込み（なければ 'top' を使う）
+const key: PageKey = (pageSlug && pageSlug in metaData.pages ? pageSlug : 'top');
+
+// 4) 以降は key を使ってインデックス
+const current = metaData.pages[key].Metas;
+
+// const current = metaData.pages[pageSlug]?.Metas ?? {};
+const formatTitle = pageSlug === 'top' ? 
+    `${Config.COMPANY_NAME}` : 
+    `${Config.COMPANY_NAME} | ${Config.SITE_NAME}`;
+const currentURL = Astro.url.href;
+
+// console.log(pageSlug);
+// console.log(current.description);
+---
+    
+    <head>
+		<meta charset="utf-8" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+
+		<title>{current.title} | ${formatTitle}</title>
+        <meta name="description" content={current.description} />
+        <meta name="keywords" content={current.keywords} />
+
+        <!-- ▼ Favicon / Touch Icon -->
+        <link rel="icon" href="/assets/favicon/favicon.ico" type="image/png" />
+        <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png" />
+        <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+
+        <!-- OGP関連 -->
+        <meta property="og:site_name" content={Config.COMPANY_NAME} />
+        <meta property="og:title" content=`${current.title} | ${formatTitle}` />
+        <meta property="og:type" content={current.og.type} />
+        <meta property="og:url" content={currentURL} />
+        <meta property="og:image" content={current.og.image} />
+        <meta property="og:description" content={current.description} />
+        <meta property="og:locale" content="ja_JP" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content=`@${Config.TWITTER_ACCOUNT}` />
+        <meta name="twitter:domain" content={Config.DOMAIN} />
+        <meta name="twitter:title" content=`${current.title} | ${formatTitle}`/>
+        <meta name="twitter:description" content={current.description} />
+        <meta name="twitter:image" content={current.og.image} />
+		
+	</head>

@@ -2,7 +2,7 @@ const ZIPCODE = '251-0001';
 const WAREHOUSE_ZIPCODE = '252-0816';
 
 export default {
-    SITE_NAME: 'Household Goods Moving & Disposal Service',
+    SITE_NAME: 'Household Goods Moving & Disposal Service for Expats and U.S. Military Personnel in Japan',
     BRAND_NAME: 'Yaruki Group',
     BRAND_NAME_JP: 'やる気グループ',
     COMPANY_NAME: 'Yaruki Group Co., Ltd.',
@@ -14,17 +14,19 @@ export default {
     TEL_HYPHEN: '0120-993-068',
     FAX: '',
     FAX_HYPHEN: '',
-    EMAIL: 'info@benri-yaruki.com',
+    EMAIL: 'info@shonan-anshin.com',
 
     ZIPCODE: ZIPCODE,
     ADDRESS_ENG: `687-39, Nishitomin, Fujisawa-shi, Kanagawa ${ZIPCODE}, Japan`,
     ADDRESS_JP: `〒${ZIPCODE} 神奈川県藤沢市西富687-39`,
     ADDR_1_ENG: '687-39',
     ADDR_1_JP: '687-39',
-    ADDR_2_ENG: 'Nishitomin',
+    ADDR_2_ENG: 'Nishitomi',
     ADDR_2_JP: '西富',
-    PREF_ENG: 'Fujisawa-shi',
-    PREF_JP: '藤沢市',
+    WARD_ENG: 'Fujisawa-shi',
+    WARD_JP: '藤沢市',
+    PREF_ENG: 'Kanagawa',
+    PREF_JP: '神奈川県',
     COUNTRY_ENG: 'Japan',
     COUNTRY_JP: '日本',
 
@@ -35,18 +37,21 @@ export default {
     WAREHOUSE_ADDR_1_JP: '2825-2',
     WAREHOUSE_ADDR_2_ENG: 'Endo',
     WAREHOUSE_ADDR_2_JP: '遠藤',
-    WAREHOUSE_PREF_ENG: 'Fujisawa-shi',
-    WAREHOUSE_PREF_JP: '藤沢市',
+    WAREHOUSE_WARD_ENG: 'Fujisawa-shi',
+    WAREHOUSE_WARD_JP: '藤沢市',
+    WAREHOUSE_PREF_ENG: 'Kanagawa',
+    WAREHOUSE_PREF_JP: '神奈川県',
     WAREHOUSE_COUNTRY_ENG: 'Japan',
     WAREHOUSE_COUNTRY_JP: '日本',
 
-    ROOT_URL: '',
-    DOMAIN: '',
-    TWITTER_ACCOUNT: '',
+    ROOT_URL: 'https://en.shonan-anshin.com/',
+    DOMAIN: 'shonan-anshin.com',
+    TWITTER_ACCOUNT: 'yarukigroup',
     FACEBOOK_ACCOUNT: '',
     INSTAGRAM_ACCOUNT: '',
     YOUTUBE_ACCOUNT: '',
     LINE_ACCOUNT: '',
 
-    LINE_URL: 'https://lin.ee/SYMP9aR'
+    LINE_URL: 'https://lin.ee/SYMP9aR',
+    MAIL_URL: '/contact/'
 }

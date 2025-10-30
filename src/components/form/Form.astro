@@ -1,0 +1,187 @@
+---
+import Config from '@/assets/libs/Constants.js';
+// ContactForm.astro
+
+---
+
+<link rel="stylesheet" href="/contact/css/form.css">
+
+<div class="formWrapper">
+
+  <div class="descWrap">
+    <p class="bold">We welcome your inquiries.</p>
+    <p>Please fill in all required fields marked with an asterisk (<span class="asterisk">*</span>).</p>
+  </div>
+
+  <form action="/contact/confirm.php" method="post" enctype="multipart/form-data" accept-charset="UTF-8" >
+    
+    <!-- 1) Inquiry Type -->
+    <div>
+      <label for="topic">Inquiry Type <span aria-hidden="true" class="asterisk">*</span></label>
+      <select id="topic" name="topic" required>
+        <option value="" selected disabled>Please select</option>
+        <option value="quote">Request a Quote</option>
+        <option value="support">Support</option>
+        <option value="general">General Inquiry</option>
+        <option value="moving">Moving to Japan</option>
+        <option value="disposal">Unwanted Items / Disposal</option>
+        <option value="cleaning">Move-out Cleaning</option>
+        <option value="storage">Short-term Storage</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <!-- 2) Name -->
+    <div>
+      <label for="name">Your Name <span aria-hidden="true" class="asterisk">*</span></label>
+      <input id="name" name="name" type="text" inputmode="text" autocomplete="name" required
+             placeholder="e.g. John Smith" maxlength="100" />
+    </div>
+
+    <!-- 3) Company (optional) -->
+    <div>
+      <label for="company">Company (optional)</label>
+      <input id="company" name="company" type="text" inputmode="text" autocomplete="organization"
+             placeholder=`e.g. ${Config.COMPANY_NAME}` maxlength="120" />
+    </div>
+
+    <!-- 4) Email -->
+    <div>
+      <label for="email">Email Address <span aria-hidden="true" class="asterisk">*</span></label>
+      <input id="email" name="email" type="email" autocomplete="email" required
+             placeholder=`e.g. ${Config.EMAIL}` maxlength="254" />
+    </div>
+
+    <!-- 5) Phone (optional) -->
+    <div>
+      <label for="tel">Phone Number (optional)</label>
+      <input
+        id="tel"
+        name="tel"
+        type="tel"
+        inputmode="tel"
+        placeholder="e.g. +81-90-1234-5678 or 090-1234-5678"
+        pattern="^(?:[0-9]|\\u002B|\\u0028|\\u0029|\\u0020|\\u002D){8,20}$"
+        title="Use only digits, +, ( ), hyphen, and spaces (8-20 characters)."
+        maxlength="20"
+        />
+      <small>Include country code if outside Japan.</small>
+    </div>
+
+
+    <div class="addressWrapper">
+      <!-- Current Residence (controls address requirement) -->
+      <fieldset>
+        <legend>Current Residence</legend>
+
+        <div class="radios">
+          <div class="radioUnit">
+              <input class="input-visually-hidden" id="inJP-yes" type="radio" name="in_japan" value="yes" checked />
+              <label class="radio" for="inJP-yes"> I currently live in Japan</label>
+          </div>
+
+          <div class="radioUnit">
+              <input class="input-visually-hidden" id="inJP-no" type="radio" name="in_japan" value="no" />
+              <label class="radio" for="inJP-no"> I currently live outside Japan</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- 6) Address (shown/required only when in Japan = yes) -->
+      <div id="addressFields" class="mt25">
+        <div>
+          <label for="zipcode">Zip Code (Japan) (optional)</label>
+          <input id="zipcode" name="zipcode" type="text"
+                inputmode="numeric" pattern="^[0-9]{3}-?[0-9]{4}$"
+                placeholder=`e.g. ${Config.ZIPCODE}` maxlength="8"
+                autocomplete="postal-code" />
+          <small>If you already have a Japanese address, please enter it.</small>
+        </div>
+
+        <div>
+          <label for="prefecture">Prefecture (optional)</label>
+          <input id="prefecture" name="prefecture" type="text" placeholder=`e.g. ${Config.PREF_ENG}`
+                autocomplete="address-level1" />
+        </div>
+
+        <div>
+          <label for="city">City / Ward (optional)</label>
+          <input id="city" name="city" type="text" placeholder=`e.g. ${Config.ADDR_2_ENG}, ${Config.WARD_ENG}`
+                autocomplete="address-level2" />
+        </div>
+
+        <div>
+          <label for="street">Street / Building (optional)</label>
+          <input id="street" name="street" type="text"
+                placeholder=`e.g. ${Config.ADDR_1_ENG}`
+                autocomplete="address-line1" />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 7) Subject -->
+    <div>
+      <label for="subject">Subject <span aria-hidden="true" class="asterisk">*</span></label>
+      <input id="subject" name="subject" type="text" required placeholder="Enter subject" maxlength="120" />
+    </div>
+
+    <!-- 8) Message -->
+    <div>
+      <label for="message">Message <span aria-hidden="true" class="asterisk">*</span></label>
+      <textarea id="message" name="message" rows="8" required
+                placeholder="Please describe your inquiry in detail" maxlength="5000"></textarea>
+    </div>
+
+    <!-- 9) Preferred Contact Method (optional) -->
+    <fieldset>
+      <legend>Preferred Contact Method (optional)</legend>
+
+      <div class="checkboxes">
+        <div class="checkUnit">
+            <input type="checkbox" name="reply_via[]" value="Email" id="via-email" class="input-visually-hidden" />
+            <label class="checkbox" for="via-email"> Email</label>
+        </div>
+
+        <div class="checkUnit">
+            <input type="checkbox" name="reply_via[]" value="Phone" id="via-phone" class="input-visually-hidden" />
+            <label for="via-phone" class="checkbox"> Phone</label>
+        </div>
+        
+        <div class="checkUnit">
+            <input type="checkbox" name="reply_via[]" value="LINE" id="via-line" class="input-visually-hidden" />
+            <label class="checkbox" for="via-line"> LINE</label>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- 10) Privacy Policy Agreement -->
+    <div>
+
+        <div class="checkUnit">
+            <input type="checkbox" name="privacy" value="agree"  required  id="privacycheck" class="input-visually-hidden"/>
+            <label for="privacycheck" class="checkbox">
+                I agree to the handling of personal information <span aria-hidden="true" class="asterisk">*</span><br />
+                <small><a href="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></small>
+            </label>
+        
+        </div>
+    </div>
+
+    <!-- 11) Spam Protection (Honeypot) -->
+    <div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
+      <label for="website">If you are human, leave this field empty.</label>
+      <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <!-- 12) Submit Button -->
+    <div class="tc">
+      <button type="submit">Confirm</button>
+    </div>
+
+    <!-- Recommended: CSRF token (handled on backend) -->
+    <!-- <input type="hidden" name="csrf_token" value="..."> -->
+  </form>
+</div>
+
+<script src="/contact/js/form-address.js" defer></script>

@@ -1,31 +1,24 @@
 ---
-// @ts-ignore
+
 import Config from '@/assets/libs/Constants.js';
-import '../assets/scss/common.scss';
-import '../assets/scss/pc.scss';
-import Header from '../components/header/Header.astro';
-import Footer from '../components/footer/Footer.astro';
-import UpperSlider from '../components/slider/UpperSlider.astro';
-import LowerSlider from '../components/slider/LowerSlider.astro';
-import ResponseDev from '../components/response/ResponseDev.astro';
+import '@/assets/scss/common.scss';
+import '@/assets/scss/pc.scss';
+import Head from '@/components/head.astro';
+import Header from '@/components/header/Header.astro';
+import Footer from '@/components/footer/Footer.astro';
+import UpperSlider from '@/components/slider/UpperSlider.astro';
+import LowerSlider from '@/components/slider/LowerSlider.astro';
+import ResponseDev from '@/components/response/ResponseDev.astro';
 
 const l_imgNum = 12;
-
+const pageID = "top";
+const pageSlug = "top";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{Config.SITE_NAME} | {Config.COMPANY_NAME}</title>
-		
-	</head>
-	<body>
+	<Head pageSlug={pageSlug} />	
+
+	<body id={pageID}>
 
 
 		<Header />
