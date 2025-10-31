@@ -49,6 +49,10 @@
 <html lang="en">    
     <head>
 		<meta charset="utf-8" />
+        <?php
+            require_once __DIR__ . '/component/gtag/gtagHead.php'; 
+        ?>
+
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -102,7 +106,10 @@
 
 
 	<body id="<?= $pageID; ?>">
-
+        <?php
+            require_once __DIR__ . '/component/gtag/gtagBody.php'; 
+        ?>
+        
 
 		<?php 
             // require('./header.php'); 

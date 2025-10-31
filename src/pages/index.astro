@@ -4,6 +4,7 @@ import Config from '@/assets/libs/Constants.js';
 import '@/assets/scss/common.scss';
 import '@/assets/scss/pc.scss';
 import Head from '@/components/head.astro';
+import GtagBody from '@/components/gtag/gtm_body.astro';
 import Header from '@/components/header/Header.astro';
 import Footer from '@/components/footer/Footer.astro';
 import UpperSlider from '@/components/slider/UpperSlider.astro';
@@ -19,7 +20,7 @@ const pageSlug = "top";
 	<Head pageSlug={pageSlug} />	
 
 	<body id={pageID}>
-
+		<GtagBody />
 
 		<Header />
 		
@@ -130,8 +131,8 @@ Our English-speaking staff assist you at every stage of your stay in Japan <br c
 
 						<div class="serviceBlock">
 							<div class="textWrap">
-								<h2>Recycling & Proper Disposal</h2>
-								<p class="desc">Eco-friendly recycling and legally compliant disposal through our integrated eco-system.</p>
+								<h2>Circular Reuse & Recycling</h2>
+								<p class="desc">Through our responsible and eco-conscious system, we give new life to items while ensuring proper handling and sustainable reuse.</p>
 							</div>
 
 							<div class="photos">
@@ -146,8 +147,8 @@ Our English-speaking staff assist you at every stage of your stay in Japan <br c
 
 						<div class="serviceBlock flexReverse">
 							<div class="textWrap">
-								<h2>Eco & Community Reuse</h2>
-								<p class="desc">Giving new life to furniture and items through recycling and community reuse in Japan.</p>
+								<h2>EcoCycle Renewal</h2>
+								<p class="desc">We create new life for old items through our responsible, eco-friendly recycling and community reuse network — bringing them back into everyday life.</p>
 							</div>
 
 							<div class="photos">
@@ -330,7 +331,7 @@ Certified Estate Organizer</dd>
 								</dl>
 								<dl>
 									<dt>Established</dt>
-									<dd>Over 10 years in service</dd>
+									<dd>01/July/2015</dd>
 								</dl>
 								<dl>
 									<dt>Services</dt>

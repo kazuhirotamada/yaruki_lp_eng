@@ -3,6 +3,7 @@
 import '@/assets/scss/common.scss';
 import '@/assets/scss/pc.scss';
 import Head from '@/components/head.astro';
+import GtagBody from '@/components/gtag/gtm_body.astro';
 import Header from '@/components/header/Header.astro';
 import Footer from '@/components/footer/Footer.astro';
 import ResponseDev from '@/components/response/ResponseDev.astro';
@@ -17,7 +18,7 @@ const pageSlug = "privacy";
 
 
 	<body id={pageID}>
-
+        <GtagBody />
 
 		<Header />
 		
